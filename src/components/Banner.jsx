@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react";
 
 export const Banner = () => {
-  return (
-    <div>
-      <h1>Pizzák</h1>
-  </div>
-  )
-}
-
-
+    return (
+        <>
+            <div style={{ color: "red" }}>SZIAAAAAAAAAAAAAAAAAAAAAAAAAAAA</div>
+            <h1>banner...</h1>
+            <div style={{ fontSize: "150px" }}>Csoki</div>
+        </>
+    );
+};
