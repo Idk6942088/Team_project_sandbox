@@ -1,32 +1,39 @@
-import React, { useState } from "react";
+import * as React from 'react';
+import Popover from '@mui/material/Popover';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
-export const PopOver = () => {
-  const [isVisible, setIsVisible] = useState(false);
+export const  PopOver=() => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const togglePopover = () => {
-    setIsVisible(!isVisible);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
   };
 
-  return (
-    <div style={{ position: "relative", display: "inline-block" }}>
-      <button onClick={togglePopover}>Kattints ide</button>
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-      {isVisible && (
-        <div
-          style={{
-            position: "absolute",
-            top: "40px",
-            left: "0",
-            background: "#f9f9f9",
-            border: "1px solid #ccc",
-            padding: "10px",
-            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-            zIndex: 1,
-          }}
-        >
-          Ez egy popover üzenet!
-        </div>
-      )}
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
+  return (
+    <div>
+      <Button aria-describedby={id} variant="contained" onClick={handleClick}>
+        Open Popover
+      </Button>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+      >
+        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+      </Popover>
     </div>
   );
-};
+}
